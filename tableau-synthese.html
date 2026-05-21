@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tableau de synthèse E5 – Noa MONTEIRO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', Arial, sans-serif;
+      font-size: 11px;
+      background: #fff;
+      color: #111;
+      padding: 20px;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ===== EN-TÊTE ===== */
+    .entete {
+      border: 1.5px solid #1a3a5c;
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
+    .entete-top {
+      background: #1a3a5c;
+      color: white;
+      text-align: center;
+      padding: 8px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .entete-title {
+      text-align: center;
+      padding: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      border-bottom: 1px solid #dde4ed;
+      color: #1a3a5c;
+    }
+
+    .entete-info {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .entete-info div {
+      padding: 8px 12px;
+      border-right: 1px solid #dde4ed;
+      font-size: 10.5px;
+    }
+    .entete-info div:last-child { border-right: none; }
+    .entete-info div strong { display: block; color: #1a3a5c; font-size: 9px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
+
+    .option-line {
+      padding: 6px 12px;
+      font-size: 10.5px;
+      border-top: 1px solid #dde4ed;
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .option-check { font-weight: 700; color: #1a3a5c; }
+
+    /* ===== TABLE ===== */
+    .tableau-wrapper {
+      border: 1.5px solid #1a3a5c;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10px;
+    }
+
+    /* En-tête colonnes compétences */
+    .header-competences {
+      background: #1a3a5c;
+      color: white;
+    }
+
+    .header-competences th {
+      padding: 6px 4px;
+      text-align: center;
+      font-size: 9px;
+      font-weight: 600;
+      line-height: 1.3;
+      border-right: 1px solid rgba(255,255,255,0.2);
+      vertical-align: top;
+    }
+
+    .header-competences th:last-child { border-right: none; }
+    .header-competences th.col-realisation { text-align: left; padding-left: 8px; min-width: 200px; }
+    .header-competences th.col-periode { min-width: 80px; }
+    .header-competences th.col-comp { width: 68px; }
+
+    /* Sous-compétences */
+    .subcomp-row {
+      background: #eef2f7;
+    }
+
+    .subcomp-row td {
+      padding: 3px 4px;
+      font-size: 8.5px;
+      color: #1a3a5c;
+      border-right: 1px solid #d4dcea;
+      border-bottom: 1px solid #c8d4e4;
+      vertical-align: top;
+      line-height: 1.35;
+    }
+    .subcomp-row td:last-child { border-right: none; }
+    .subcomp-row td.col-realisation { font-style: italic; color: #555; }
+
+    /* Section headers */
+    .section-header td {
+      background: #f0f4f8;
+      color: #1a3a5c;
+      font-weight: 700;
+      font-size: 9.5px;
+      padding: 5px 8px;
+      border-top: 2px solid #1a3a5c;
+      border-bottom: 1px solid #c8d4e4;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* Lignes réalisations */
+    tr.realisation-row td {
+      padding: 7px 4px;
+      border-bottom: 1px solid #e8ecf0;
+      border-right: 1px solid #e8ecf0;
+      vertical-align: middle;
+    }
+    tr.realisation-row td:last-child { border-right: none; }
+    tr.realisation-row:last-child td { border-bottom: none; }
+
+    tr.realisation-row td.col-realisation {
+      padding-left: 8px;
+      font-weight: 500;
+      color: #1a1816;
+      line-height: 1.4;
+    }
+
+    tr.realisation-row td.col-realisation .preuves-list {
+      margin-top: 4px;
+      font-size: 8.5px;
+      color: #666;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    tr.realisation-row td.col-periode {
+      text-align: center;
+      color: #444;
+      font-size: 9px;
+      line-height: 1.4;
+      white-space: nowrap;
+    }
+
+    /* Croix */
+    .check {
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: #1a3a5c;
+    }
+
+    tr:nth-child(even).realisation-row { background: #fafbfc; }
+
+    /* Footer tableau */
+    .footer-url {
+      border-top: 2px solid #1a3a5c;
+      padding: 7px 12px;
+      font-size: 9.5px;
+      background: #f0f4f8;
+      color: #1a3a5c;
+    }
+
+    /* PRINT */
+    @media print {
+      body { padding: 10px; font-size: 10px; }
+      .no-print { display: none; }
+      .page { max-width: 100%; }
+    }
+
+    /* Bouton imprimer */
+    .print-btn {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 16px;
+    }
+    .print-btn button {
+      background: #1a3a5c;
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .print-btn button:hover { background: #0f2540; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Bouton imprimer -->
+  <div class="print-btn no-print">
+    <button onclick="window.print()">🖨️ Imprimer / Exporter PDF</button>
+  </div>
+
+  <!-- EN-TÊTE -->
+  <div class="entete">
+    <div class="entete-top">BTS SERVICES INFORMATIQUES AUX ORGANISATIONS — SESSION 2026</div>
+    <div class="entete-title">Tableau de synthèse des réalisations professionnelles</div>
+    <div class="entete-info">
+      <div><strong>Nom et prénom</strong>MONTEIRO Noa</div>
+      <div><strong>Centre de formation</strong>CFA ISCIO-EVE</div>
+      <div><strong>N° candidat</strong>02306878243</div>
+    </div>
+    <div class="option-line">
+      <span><span class="option-check">☑</span> Option SISR</span>
+      <span><span>☐</span> Option SLAM</span>
+    </div>
+  </div>
+
+  <!-- TABLEAU -->
+  <div class="tableau-wrapper">
+    <table>
+      <!-- En-tête compétences -->
+      <thead>
+        <tr class="header-competences">
+          <th class="col-realisation" rowspan="2">Réalisations professionnelles<br/><span style="font-weight:300;font-size:8px;">(intitulé et liste des documents et productions associés)</span></th>
+          <th class="col-periode" rowspan="2">Période<br/><span style="font-weight:300;font-size:8px;">JJ/MM/AA</span></th>
+          <th class="col-comp">Gérer le patrimoine informatique</th>
+          <th class="col-comp">Répondre aux incidents et aux demandes d'assistance et d'évolution</th>
+          <th class="col-comp">Développer la présence en ligne de l'organisation</th>
+          <th class="col-comp">Travailler en mode projet</th>
+          <th class="col-comp">Mettre à disposition des utilisateurs un service informatique</th>
+          <th class="col-comp">Organiser son développement professionnel</th>
+        </tr>
+        <!-- Sous-compétences -->
+        <tr class="subcomp-row">
+          <td>
+            ▸ Recenser et identifier les ressources numériques<br/>
+            ▸ Exploiter des référentiels, normes et standards<br/>
+            ▸ Mettre en place et vérifier les niveaux d'habilitation<br/>
+            ▸ Vérifier les conditions de la continuité d'un service<br/>
+            ▸ Gérer des sauvegardes<br/>
+            ▸ Vérifier le respect des règles d'utilisation des ressources numériques
+          </td>
+          <td>
+            ▸ Collecter, suivre et orienter des demandes<br/>
+            ▸ Traiter des demandes concernant les services réseau, système, applicatifs<br/>
+            ▸ Traiter des demandes concernant les applications
+          </td>
+          <td>
+            ▸ Participer à la valorisation de l'image de l'organisation sur les médias numériques<br/>
+            ▸ Référencer les services en ligne et mesurer leur visibilité<br/>
+            ▸ Participer à l'évolution d'un site Web
+          </td>
+          <td>
+            ▸ Analyser les objectifs et les modalités d'organisation d'un projet<br/>
+            ▸ Planifier les activités<br/>
+            ▸ Évaluer les indicateurs de suivi d'un projet
+          </td>
+          <td>
+            ▸ Réaliser les tests d'intégration et d'acceptation d'un service<br/>
+            ▸ Déployer un service<br/>
+            ▸ Accompagner les utilisateurs dans la mise en place d'un service
+          </td>
+          <td>
+            ▸ Mettre en place son environnement d'apprentissage personnel<br/>
+            ▸ Mettre en œuvre des outils et stratégies de veille informationnelle<br/>
+            ▸ Gérer son identité professionnelle<br/>
+            ▸ Développer son projet professionnel
+          </td>
+        </tr>
+      </thead>
+
+      <tbody>
+        <!-- ====== SECTION FORMATION ====== -->
+        <tr class="section-header">
+          <td colspan="8">Réalisations en cours de formation</td>
+        </tr>
+
+        <tr class="realisation-row">
+          <td class="col-realisation">
+            Projet StreamIO – Segmentation VLAN et routage inter-VLAN
+            <div class="preuves-list">
+              Cahier des charges / Fiche descriptive / Documentation technique / Fiche de présentation solution (PDF)
+            </div>
+          </td>
+          <td class="col-periode">02/09/25<br/>au<br/>22/12/25</td>
+          <td class="check">✕</td>
+          <td></td>
+          <td></td>
+          <td class="check">✕</td>
+          <td class="check">✕</td>
+          <td></td>
+        </tr>
+
+        <tr class="realisation-row">
+          <td class="col-realisation">
+            Portfolio professionnel en ligne
+            <div class="preuves-list">
+              URL : https://yadesfax.github.io/Porfolio-BTS
+            </div>
+          </td>
+          <td class="col-periode">01/09/24<br/>au<br/>22/05/26</td>
+          <td></td>
+          <td></td>
+          <td class="check">✕</td>
+          <td></td>
+          <td></td>
+          <td class="check">✕</td>
+        </tr>
+
+        <tr class="realisation-row">
+          <td class="col-realisation">
+            Veille informationnelle – Cybersécurité en entreprise
+            <div class="preuves-list">
+              Captures Google Alertes / Feedly / Fiche de synthèse de veille (PDF)
+            </div>
+          </td>
+          <td class="col-periode">01/09/24<br/>au<br/>30/06/26</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="check">✕</td>
+        </tr>
+
+        <!-- ====== SECTION 1ÈRE ANNÉE ====== -->
+        <tr class="section-header">
+          <td colspan="8">Réalisations en milieu professionnel en cours de première année – FMO Consulting</td>
+        </tr>
+
+        <tr class="realisation-row">
+          <td class="col-realisation">
+            Migration de données vers SAP S/4HANA – Kering Beauté
+            <div class="preuves-list">
+              Documentation technique SP4 – Migration de données SAP Fiori (PDF)
+            </div>
+          </td>
+          <td class="col-periode">01/10/24<br/>au<br/>01/12/24</td>
+          <td class="check">✕</td>
+          <td class="check">✕</td>
+          <td></td>
+          <td class="check">✕</td>
+          <td class="check">✕</td>
+          <td class="check">✕</td>
+        </tr>
+
+        <tr class="realisation-row">
+          <td class="col-realisation">
+            Assistance et support SAP auprès du consultant senior
+            <div class="preuves-list">
+              Capture – Suivi d'une demande de support SAP (PNG)
+            </div>
+          </td>
+          <td class="col-periode">01/10/24<br/>au<br/>30/06/25</td>
+          <td class="check">✕</td>
+          <td class="check">✕</td>
+          <td></td>
+          <td></td>
+          <td class="check">✕</td>
+          <td class="check">✕</td>
+        </tr>
+
+        <!-- ====== SECTION 2ÈME ANNÉE ====== -->
+        <tr class="section-header">
+          <td colspan="8">Réalisations en milieu professionnel en cours de seconde année – FMO Consulting</td>
+        </tr>
+
+        <tr class="realisation-row">
+          <td class="col-realisation">
+            Personnalisation du système SAP (Customizing) — Kering Beauté : création de 42 plants, config. MM/SD, mise à jour CRD (SP1)
+            <div class="preuves-list">
+              Documentation technique SP1 – Personnalisation SAP / Création de plants (PDF)
+            </div>
+          </td>
+          <td class="col-periode">01/09/25<br/>au<br/>05/11/25</td>
+          <td class="check">✕</td>
+          <td class="check">✕</td>
+          <td></td>
+          <td class="check">✕</td>
+          <td class="check">✕</td>
+          <td class="check">✕</td>
+        </tr>
+
+        <tr class="realisation-row">
+          <td class="col-realisation">
+            Contrôle quotidien des flux d'intégration SAP / 3PL FM Logistic via BTP (SP2)
+            <div class="preuves-list">
+              Documentation technique SP2 – Contrôle flux SAP BTP / 3PL (PDF)
+            </div>
+          </td>
+          <td class="col-periode">01/01/25<br/>au<br/>aujourd'hui</td>
+          <td class="check">✕</td>
+          <td class="check">✕</td>
+          <td></td>
+          <td></td>
+          <td class="check">✕</td>
+          <td class="check">✕</td>
+        </tr>
+
+        <tr class="realisation-row">
+          <td class="col-realisation">
+            Assistance et support SAP auprès du consultant senior
+            <div class="preuves-list">
+              Capture – Suivi d'une demande de support SAP 2ème année (PNG)
+            </div>
+          </td>
+          <td class="col-periode">01/09/25<br/>au<br/>aujourd'hui</td>
+          <td class="check">✕</td>
+          <td class="check">✕</td>
+          <td></td>
+          <td></td>
+          <td class="check">✕</td>
+          <td class="check">✕</td>
+        </tr>
+
+      </tbody>
+    </table>
+
+    <!-- URL portfolio -->
+    <div class="footer-url">
+      <strong>Adresse URL du portfolio :</strong> https://yadesfax.github.io/Porfolio-BTS
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

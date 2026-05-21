@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Réalisations en formation – Portfolio E5</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-brand">N. MONTEIRO</a>
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="formation.html" class="active">Formation</a></li>
+      <li><a href="pro-annee1.html">1ère année pro</a></li>
+      <li><a href="pro-annee2.html">2ème année pro</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <p class="breadcrumb">Portfolio E5 — Formation</p>
+      <h1>Réalisations en cours de formation</h1>
+      <p class="subtitle">Projets menés au CFA ISCIO-EVE</p>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <!-- RÉALISATION 1 : StreamIO -->
+    <div class="realisation">
+      <div class="realisation-header">
+        <h3>Projet StreamIO – Segmentation VLAN et routage inter-VLAN</h3>
+        <span class="periode">02/09/2025 → 22/12/2025</span>
+      </div>
+      <div class="competences">
+        <span class="competence-tag">Travailler en mode projet</span>
+        <span class="competence-tag">Mettre à disposition un service</span>
+        <span class="competence-tag">Gérer le patrimoine informatique</span>
+      </div>
+      <p class="realisation-desc">
+        Projet de conception et déploiement d'une infrastructure réseau segmentée pour la société fictive <strong>StreamIO</strong> (startup audiovisuelle). Configuration complète de deux switches Cisco Catalyst 2960 et d'un routeur Cisco 4300 pour la création de 12 VLANs métier (Direction, Commerce, Comptabilité, IT, R&D, DMZ…), le routage inter-VLAN via la méthode <em>Router-on-a-Stick</em>, la mise en place d'un EtherChannel LACP entre les switches, et l'isolation du VLAN Invités (VLAN 200) via ACL. Tous les tests de connectivité et d'isolation ont été validés.
+      </p>
+      <div class="preuves">
+        <h4>Documents associés</h4>
+        <ul>
+          <li><a href="docs/formation/00-Cahier_des_Charges.pdf">📄 Cahier des charges – Routage inter-VLAN</a></li>
+          <li><a href="docs/formation/10-Fiche_descriptive_Projet_1.pdf">📄 Fiche descriptive de réalisation professionnelle</a></li>
+          <li><a href="docs/formation/20-Documentation_Technique.pdf">📄 Documentation technique – VLANs & Routage inter-VLAN</a></li>
+          <li><a href="docs/formation/30-Fiche_Presentation_Solution.pdf">📄 Fiche de présentation de la solution déployée</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- RÉALISATION 2 : Portfolio -->
+    <div class="realisation">
+      <div class="realisation-header">
+        <h3>Portfolio professionnel en ligne</h3>
+        <span class="periode">01/09/2024 → 22/05/2026</span>
+      </div>
+      <div class="competences">
+        <span class="competence-tag">Développer la présence en ligne</span>
+        <span class="competence-tag">Organiser son développement professionnel</span>
+      </div>
+      <p class="realisation-desc">
+        Conception et déploiement d'un portfolio professionnel en ligne hébergé sur <strong>GitHub Pages</strong>, présentant l'ensemble de mes réalisations de formation et professionnelles dans le cadre de l'épreuve E5 du BTS SIO SISR. Réalisé en HTML/CSS avec une architecture multi-pages, un design épuré et une navigation responsive.
+      </p>
+      <div class="preuves">
+        <h4>Documents associés</h4>
+        <ul>
+          <li><a href="https://yadesfax.github.io/Porfolio-BTS" target="_blank">🌐 https://yadesfax.github.io/Porfolio-BTS</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- RÉALISATION 3 : Veille -->
+    <div class="realisation">
+      <div class="realisation-header">
+        <h3>Veille informationnelle – Cybersécurité en entreprise</h3>
+        <span class="periode">01/09/2024 → 30/06/2026</span>
+      </div>
+      <div class="competences">
+        <span class="competence-tag">Organiser son développement professionnel</span>
+      </div>
+      <p class="realisation-desc">
+        Mise en place d'une démarche de veille technologique structurée sur la thématique de la <strong>cybersécurité en entreprise</strong>. Utilisation de <strong>Google Alertes</strong> pour le suivi automatisé des actualités (mots-clés : ransomware, RGPD, vulnérabilités, ANSSI) et de <strong>Feedly</strong> pour l'agrégation de sources spécialisées (CERT-FR, Le Monde Informatique, ANSSI). Synthèse régulière des informations collectées.
+      </p>
+      <div class="preuves">
+        <h4>Documents associés</h4>
+        <ul>
+          <li><a href="docs/formation/veille-google-alertes.png">🖼️ Capture d'écran – Google Alertes configurées (cybersécurité)</a></li>
+          <li><a href="docs/formation/veille-feedly.png">🖼️ Capture d'écran – Tableau de bord Feedly</a></li>
+          <li><a href="docs/formation/fiche-veille.pdf">📄 Fiche de synthèse de veille informationnelle</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>Portfolio E5 – Noa MONTEIRO – BTS SIO SISR – Session 2026</p>
+  </footer>
+</body>
+</html>
